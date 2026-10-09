@@ -112,6 +112,37 @@ section{padding:6rem 3rem}
 .v-title{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--white);line-height:1.3}
 .v-sub{font-size:.76rem;color:var(--gray);margin-top:.3rem}
 
+/* RESULTS — Broadway Shuffle analytics */
+.results-intro{color:rgba(42,36,32,.65);margin-bottom:2.5rem;max-width:680px;line-height:1.7}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem}
+.kpi{padding:1.6rem 1.4rem;border:1px solid var(--border);background:var(--card)}
+.kpi-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--accent);line-height:1}
+.kpi-label{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--tan);margin-top:.4rem}
+.kpi-note{font-size:.78rem;color:var(--gray);margin-top:.6rem;line-height:1.45}
+.chart-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:1.5rem;margin-bottom:3rem}
+.chart-card{padding:1.8rem;border:1px solid var(--border);background:var(--card);position:relative;min-width:0}
+.chart-title{font-family:'DM Serif Display',serif;font-size:1.15rem;margin-bottom:.3rem}
+.chart-sub{font-size:.78rem;color:var(--gray);margin-bottom:1.2rem;line-height:1.5}
+.chart-svg{width:100%;height:auto;display:block;overflow:visible}
+.chart-svg text{font-family:'DM Sans',sans-serif;fill:var(--tan)}
+.chart-tip{position:absolute;pointer-events:none;background:var(--white);color:var(--black);font-size:.75rem;padding:.45rem .65rem;line-height:1.4;opacity:0;transition:opacity .15s;white-space:nowrap;z-index:2}
+.chart-tip strong{font-weight:500}
+.chart-table{margin-top:1rem;font-size:.75rem;color:var(--gray)}
+.chart-table summary{cursor:pointer;letter-spacing:.08em;text-transform:uppercase;font-size:.65rem}
+.chart-table table{border-collapse:collapse;margin-top:.6rem;width:100%}
+.chart-table td,.chart-table th{text-align:left;padding:.2rem .5rem .2rem 0;border-bottom:1px solid var(--border);font-weight:400}
+.post-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.post-card{border:1px solid var(--border);background:var(--card);cursor:pointer;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
+.post-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.post-shot{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#ddd5c5}
+.post-card.no-img .post-shot{display:none}
+.post-ph{display:none;aspect-ratio:4/5;align-items:center;justify-content:center;background:#ddd5c5;color:var(--gray);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
+.post-card.no-img .post-ph{display:flex}
+.post-info{padding:1.1rem}
+.post-stats{display:flex;gap:1rem;margin-top:.6rem;font-size:.72rem;color:var(--gray)}
+.post-stats b{color:var(--white);font-weight:500}
+.results-foot{font-size:.72rem;color:var(--gray);margin-top:2rem;line-height:1.6}
+
 /* CONTACT */
 .contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .contact-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:.9;letter-spacing:.02em}
@@ -154,12 +185,19 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify
   .portfolio-grid,.photo-grid{columns:2}
   .video-grid{grid-template-columns:repeat(2,1fr)}
   .writing-grid{grid-template-columns:1fr}
+  .kpi-grid,.post-grid{grid-template-columns:repeat(2,1fr)}
+  .chart-grid{grid-template-columns:1fr}
   footer{flex-direction:column;gap:.5rem;text-align:center}
 }
 @media(max-width:600px){
   .portfolio-grid,.photo-grid{columns:1}
   .video-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
+  .kpi-grid,.post-grid{grid-template-columns:1fr}
+  .nav-links{gap:.9rem;overflow-x:auto;scrollbar-width:none;margin-left:1rem}
+  .nav-links a{font-size:.6rem;letter-spacing:.08em}
+  nav{padding:1rem}
+  .chart-card{padding:1.2rem}
 }
 </style>
 </head>
@@ -173,6 +211,7 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify
     <li><a href="#photo">Photos</a></li>
     <li><a href="#writing">Writing</a></li>
     <li><a href="#video">Video</a></li>
+    <li><a href="#results">Results</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -427,6 +466,66 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify
 
 <div class="divider"></div>
 
+<!-- RESULTS — Broadway Shuffle analytics -->
+<section id="results">
+  <div class="reveal"><p class="section-label">Social Media Analytics</p><h2 class="section-title">The Broadway Shuffle <em>Results</em></h2></div>
+  <p class="results-intro reveal">In mid-January 2026 I took over episode editing, thumbnail design, and all social media for The Broadway Shuffle, a Texas Tech sports podcast on YouTube and Instagram. Here is how the channels have performed since.</p>
+
+  <div class="kpi-grid reveal">
+    <div class="kpi"><div class="kpi-num">+133%</div><div class="kpi-label">Views per episode</div><div class="kpi-note">Aug–Sep 2026 season start vs. the same weeks in 2025 (4,383 vs. 1,881 avg).</div></div>
+    <div class="kpi"><div class="kpi-num">4,982</div><div class="kpi-label">Channel record</div><div class="kpi-note">Avg views per episode published in September 2026, the best month in the show's history.</div></div>
+    <div class="kpi"><div class="kpi-num">7.0%</div><div class="kpi-label">Thumbnail click rate</div><div class="kpi-note">On episodes since I started designing thumbnails, up from 5.8% before.</div></div>
+    <div class="kpi"><div class="kpi-num">173K</div><div class="kpi-label">Instagram views</div><div class="kpi-note">68 posts, July–October 2026, reaching 121K accounts.</div></div>
+  </div>
+
+  <div class="chart-grid reveal">
+    <div class="chart-card">
+      <div class="chart-title">YouTube views per episode</div>
+      <div class="chart-sub">Average lifetime views per full episode, by month published</div>
+      <svg class="chart-svg" id="ytChart" viewBox="0 0 640 280" role="img" aria-label="Line chart of average YouTube views per episode by month, rising from under 2,000 before January 2026 to 4,982 in September 2026"></svg>
+      <div class="chart-tip" id="ytTip"></div>
+      <details class="chart-table"><summary>View data</summary><table id="ytTable"></table></details>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Instagram engagement by format</div>
+      <div class="chart-sub">Likes, comments, shares and saves as a share of accounts reached, Jul–Oct 2026</div>
+      <svg class="chart-svg" id="igChart" viewBox="0 0 360 200" role="img" aria-label="Bar chart: photo carousels 10.1% engagement, single images 6.4%, reels 4.9%"></svg>
+      <p class="chart-sub" style="margin:1rem 0 0">My event photo carousels earn twice the engagement of reels.</p>
+    </div>
+  </div>
+
+  <div class="reveal"><p class="section-label" style="margin-bottom:1.2rem">Top Posts</p></div>
+  <div class="post-grid reveal">
+    <div class="post-card" data-modal-img="assets/bs-ig-mcguire.jpg" data-modal-cat="Instagram · Interview Clip" data-modal-title="Joey McGuire: Red Raiders to Watch" data-modal-desc="Promo clip from my sit-down interview with Head Coach Joey McGuire, cut to drive viewers to the full YouTube episode. The top post of the 2026 preseason. 12.3K views · 10.2K accounts reached. instagram.com/reel/DcdxPoQhzEz">
+      <img class="post-shot" src="assets/bs-ig-mcguire.jpg" alt="Joey McGuire: Red Raiders to Watch" onerror="this.closest('.post-card').classList.add('no-img')">
+      <div class="post-ph">Screenshot</div>
+      <div class="post-info"><div class="p-cat" style="margin-bottom:.35rem">Instagram · Interview Clip</div><div class="v-title">Joey McGuire: Red Raiders to Watch</div>
+        <div class="post-stats"><span><b>12.3K</b> views</span><span><b>175</b> engagements</span></div></div>
+    </div>
+    <div class="post-card" data-modal-img="assets/bs-ig-top10.jpg" data-modal-cat="Instagram · Commentary Reel" data-modal-title="Not a Top 10 Team… Yet" data-modal-desc="Quick-turn reaction reel after the Week 1 AP poll drop, timed to the news cycle. 10.9K views · 8.6K accounts reached. instagram.com/reel/DdC9TAZuDZe">
+      <img class="post-shot" src="assets/bs-ig-top10.jpg" alt="Not a Top 10 Team… Yet" onerror="this.closest('.post-card').classList.add('no-img')">
+      <div class="post-ph">Screenshot</div>
+      <div class="post-info"><div class="p-cat" style="margin-bottom:.35rem">Instagram · Commentary Reel</div><div class="v-title">Not a Top 10 Team… Yet</div>
+        <div class="post-stats"><span><b>10.9K</b> views</span><span><b>416</b> engagements</span></div></div>
+    </div>
+    <div class="post-card" data-modal-img="assets/bs-ig-twodocs.jpg" data-modal-cat="Instagram · Photo Carousel" data-modal-title="Live Hangout at Two Docs" data-modal-desc="Event recap carousel from our live fan hangout with partner Two Docs Brewing. Photography and copy by me. 8K views · 3.1K accounts reached. instagram.com/p/DdblLXXljp4">
+      <img class="post-shot" src="assets/bs-ig-twodocs.jpg" alt="Live Hangout at Two Docs" onerror="this.closest('.post-card').classList.add('no-img')">
+      <div class="post-ph">Screenshot</div>
+      <div class="post-info"><div class="p-cat" style="margin-bottom:.35rem">Instagram · Photo Carousel</div><div class="v-title">Live Hangout at Two Docs</div>
+        <div class="post-stats"><span><b>8K</b> views</span><span><b>214</b> engagements</span></div></div>
+    </div>
+    <div class="post-card" data-modal-img="assets/bs-ig-galaxy.jpg" data-modal-cat="Instagram · Photo Carousel" data-modal-title="Behind the Scenes at Galaxy Stadium" data-modal-desc="Behind-the-scenes photo carousel from the Joey McGuire interview shoot, posted to build anticipation for the episode. Photography by me. 6.5K views · 2.4K accounts reached. instagram.com/p/DcSMEhSFgbG">
+      <img class="post-shot" src="assets/bs-ig-galaxy.jpg" alt="Behind the Scenes at Galaxy Stadium" onerror="this.closest('.post-card').classList.add('no-img')">
+      <div class="post-ph">Screenshot</div>
+      <div class="post-info"><div class="p-cat" style="margin-bottom:.35rem">Instagram · Photo Carousel</div><div class="v-title">Behind the Scenes at Galaxy Stadium</div>
+        <div class="post-stats"><span><b>6.5K</b> views</span><span><b>232</b> engagements</span></div></div>
+    </div>
+  </div>
+  <p class="results-foot reveal">Source: YouTube Studio and Meta Business Suite exports, October 9, 2026. Views are lifetime totals, so recent episodes are still climbing.</p>
+</section>
+
+<div class="divider"></div>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-wrapper reveal">
@@ -490,7 +589,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
 });
 
 const modal=document.getElementById('modal');
-document.querySelectorAll('.portfolio-item,.photo-item').forEach(item=>{
+document.querySelectorAll('.portfolio-item,.photo-item,.post-card').forEach(item=>{
   item.addEventListener('click',()=>{
     const img=item.dataset.modalImg;
     if(!img)return;
@@ -503,6 +602,46 @@ document.querySelectorAll('.portfolio-item,.photo-item').forEach(item=>{
 });
 document.getElementById('modalClose').addEventListener('click',()=>modal.classList.remove('open'));
 modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+// RESULTS charts
+(function(){
+  const NS='http://www.w3.org/2000/svg',ACC='#7a6245',GRID='rgba(90,70,50,.12)';
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e};
+  const fmt=n=>n.toLocaleString('en-US');
+  // YouTube: avg lifetime views per full episode by publish month
+  const labels=['Aug 24','Sep 24','Oct 24','Nov 24','Dec 24','Jan 25','Feb 25','Mar 25','Apr 25','May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26'];
+  const vals=[168,343,537,1277,1424,631,864,1198,1089,937,1876,1410,1790,1972,2371,1972,2298,2312,1016,1213,1673,1840,2348,1865,3665,4982];
+  const svg=document.getElementById('ytChart'),tip=document.getElementById('ytTip');
+  const W=Math.max(300,Math.round(svg.getBoundingClientRect().width)||640),H=W<500?240:280,L=40,R=12,T=16,B=30,max=5000;svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  const x=i=>L+i*(W-L-R)/(vals.length-1),y=v=>T+(H-T-B)*(1-v/max);
+  [0,1000,2000,3000,4000,5000].forEach(g=>{el('line',{x1:L,x2:W-R,y1:y(g),y2:y(g),stroke:GRID},svg);const t=el('text',{x:L-8,y:y(g)+4,'text-anchor':'end','font-size':11},svg);t.textContent=g?g/1000+'K':'0'});
+  (W<500?[0,12,25]:[0,5,12,17,25]).forEach(i=>{const t=el('text',{x:x(i),y:H-8,'text-anchor':'middle','font-size':11},svg);t.textContent=labels[i]});
+  const tx=x(17.5);
+  el('line',{x1:tx,x2:tx,y1:T,y2:H-B,stroke:ACC,'stroke-dasharray':'3 4','stroke-width':1},svg);
+  const tl=el('text',{x:tx-6,y:T+10,'text-anchor':'end','font-size':11},svg);tl.textContent='I take over →';
+  el('path',{d:vals.map((v,i)=>(i?'L':'M')+x(i)+' '+y(v)).join(''),fill:'none',stroke:ACC,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'},svg);
+  const last=vals.length-1;
+  el('circle',{cx:x(last),cy:y(vals[last]),r:4.5,fill:ACC,stroke:'#ede5d8','stroke-width':2},svg);
+  const lt=el('text',{x:x(last)-8,y:y(vals[last])+4,'text-anchor':'end','font-size':12,'font-weight':500},svg);lt.textContent=fmt(vals[last]);
+  const cross=el('line',{y1:T,y2:H-B,stroke:'rgba(90,70,50,.35)',opacity:0},svg);
+  const dot=el('circle',{r:4.5,fill:ACC,stroke:'#ede5d8','stroke-width':2,opacity:0},svg);
+  const hit=el('rect',{x:L,y:T,width:W-L-R,height:H-T-B,fill:'transparent'},svg);
+  function move(e){const r=svg.getBoundingClientRect(),px=(e.clientX-r.left)*W/r.width;let i=Math.round((px-L)/((W-L-R)/(vals.length-1)));i=Math.max(0,Math.min(last,i));
+    cross.setAttribute('x1',x(i));cross.setAttribute('x2',x(i));cross.setAttribute('opacity',1);dot.setAttribute('cx',x(i));dot.setAttribute('cy',y(vals[i]));dot.setAttribute('opacity',1);
+    tip.innerHTML='<strong>'+labels[i].replace(' ',' 20')+'</strong><br>'+fmt(vals[i])+' avg views';tip.style.opacity=1;
+    const card=svg.parentElement.getBoundingClientRect(),sx=r.left-card.left+x(i)*r.width/W,sy=r.top-card.top+y(vals[i])*r.height/H;
+    tip.style.left=Math.min(sx+12,card.width-tip.offsetWidth-8)+'px';tip.style.top=(sy-48)+'px'}
+  hit.addEventListener('mousemove',move);hit.addEventListener('mouseleave',()=>{tip.style.opacity=0;cross.setAttribute('opacity',0);dot.setAttribute('opacity',0)});
+  document.getElementById('ytTable').innerHTML='<tr><th>Month</th><th>Avg views</th></tr>'+labels.map((l,i)=>'<tr><td>'+l.replace(' ',' 20')+'</td><td>'+fmt(vals[i])+'</td></tr>').join('');
+  // Instagram: engagement rate by format
+  const ig=[['Photo carousels',10.1],['Single images',6.4],['Reels',4.9]],g=document.getElementById('igChart');
+  const bx=118,bw=200,bh=30,gap=26;
+  ig.forEach(([n,v],i)=>{const by=14+i*(bh+gap);
+    const lb=el('text',{x:bx-12,y:by+bh/2+4,'text-anchor':'end','font-size':12},g);lb.textContent=n;
+    el('line',{x1:bx,x2:bx,y1:4,y2:200-8,stroke:GRID},g);
+    const w=bw*v/12,b=el('path',{d:`M${bx} ${by}h${w-4}a4 4 0 0 1 4 4v${bh-8}a4 4 0 0 1-4 4h${-(w-4)}z`,fill:ACC,opacity:i?0.55:1},g);
+    el('title',{},b).textContent=n+': '+v+'% engagement';
+    const vt=el('text',{x:bx+w+8,y:by+bh/2+4,'font-size':12,'font-weight':500},g);vt.textContent=v+'%'});
+})();
 </script>
 </body>
 </html>
