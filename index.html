@@ -468,6 +468,14 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify
 
 <!-- RESULTS — Broadway Shuffle analytics -->
 <section id="results">
+<style>
+/* Results section layout (5 stat cards + X chart) */
+#results .kpi-grid{grid-template-columns:repeat(5,1fr);gap:1.25rem}
+#results .kpi-num{font-size:2.7rem}
+#results .x-card{margin-bottom:3rem}
+@media(max-width:900px){#results .kpi-grid{grid-template-columns:repeat(2,1fr)}#results .kpi-grid .kpi:last-child:nth-child(odd){grid-column:span 2}}
+@media(max-width:600px){#results .kpi-grid{grid-template-columns:1fr}#results .kpi-grid .kpi:last-child:nth-child(odd){grid-column:auto}}
+</style>
   <div class="reveal"><p class="section-label">Social Media Analytics</p><h2 class="section-title">The Broadway Shuffle <em>Results</em></h2></div>
   <p class="results-intro reveal">In mid-January 2026 I took over episode editing, thumbnail design, and all social media for The Broadway Shuffle, a Texas Tech sports podcast on YouTube, Instagram and X. Here is how the channels have performed since.</p>
 
@@ -532,8 +540,64 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify
     </div>
   </div>
   <p class="results-foot reveal">Source: YouTube Studio export, November 22, 2026; X account analytics, November 23, 2026; Instagram figures from Meta Business Suite, October 9, 2026. Views are lifetime totals, so recent episodes are still climbing.</p>
+<script>
+// Draws the Results charts. Runs after the page's own scripts and replaces anything they drew here.
+document.addEventListener('DOMContentLoaded',function(){
+  const NS='http://www.w3.org/2000/svg',ACC='#7a6245',GRID='rgba(90,70,50,.12)';
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e};
+  const fmt=n=>n.toLocaleString('en-US');
+  // YouTube: avg lifetime views per full episode by publish month
+  const labels=['Aug 24','Sep 24','Oct 24','Nov 24','Dec 24','Jan 25','Feb 25','Mar 25','Apr 25','May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26'];
+  const vals=[168,343,537,1277,1424,631,864,1198,1089,937,1876,1410,1790,1972,2371,1972,2299,2315,1016,1218,1673,1843,2352,1868,3730,5014,4658,6382];
+  const svg=document.getElementById('ytChart'),tip=document.getElementById('ytTip');svg.innerHTML='';
+  const W=Math.max(300,Math.round(svg.getBoundingClientRect().width)||640),H=W<500?240:280,L=40,R=12,T=16,B=30,max=7000;svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  const x=i=>L+i*(W-L-R)/(vals.length-1),y=v=>T+(H-T-B)*(1-v/max);
+  [0,1000,2000,3000,4000,5000,6000,7000].forEach(g=>{el('line',{x1:L,x2:W-R,y1:y(g),y2:y(g),stroke:GRID},svg);const t=el('text',{x:L-8,y:y(g)+4,'text-anchor':'end','font-size':11},svg);t.textContent=g?g/1000+'K':'0'});
+  (W<500?[0,13,27]:[0,6,13,20,27]).forEach(i=>{const t=el('text',{x:x(i),y:H-8,'text-anchor':'middle','font-size':11},svg);t.textContent=labels[i]});
+  const tx=x(17.5);
+  el('line',{x1:tx,x2:tx,y1:T,y2:H-B,stroke:ACC,'stroke-dasharray':'3 4','stroke-width':1},svg);
+  const tl=el('text',{x:tx-6,y:T+10,'text-anchor':'end','font-size':11},svg);tl.textContent='I take over →';
+  el('path',{d:vals.map((v,i)=>(i?'L':'M')+x(i)+' '+y(v)).join(''),fill:'none',stroke:ACC,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'},svg);
+  const last=vals.length-1;
+  el('circle',{cx:x(last),cy:y(vals[last]),r:4.5,fill:ACC,stroke:'#ede5d8','stroke-width':2},svg);
+  const lt=el('text',{x:x(last)-8,y:y(vals[last])+4,'text-anchor':'end','font-size':12,'font-weight':500},svg);lt.textContent=fmt(vals[last]);
+  const cross=el('line',{y1:T,y2:H-B,stroke:'rgba(90,70,50,.35)',opacity:0},svg);
+  const dot=el('circle',{r:4.5,fill:ACC,stroke:'#ede5d8','stroke-width':2,opacity:0},svg);
+  const hit=el('rect',{x:L,y:T,width:W-L-R,height:H-T-B,fill:'transparent'},svg);
+  function move(e){const r=svg.getBoundingClientRect(),px=(e.clientX-r.left)*W/r.width;let i=Math.round((px-L)/((W-L-R)/(vals.length-1)));i=Math.max(0,Math.min(last,i));
+    cross.setAttribute('x1',x(i));cross.setAttribute('x2',x(i));cross.setAttribute('opacity',1);dot.setAttribute('cx',x(i));dot.setAttribute('cy',y(vals[i]));dot.setAttribute('opacity',1);
+    tip.innerHTML='<strong>'+labels[i].replace(' ',' 20')+'</strong><br>'+fmt(vals[i])+' avg views';tip.style.opacity=1;
+    const card=svg.parentElement.getBoundingClientRect(),sx=r.left-card.left+x(i)*r.width/W,sy=r.top-card.top+y(vals[i])*r.height/H;
+    tip.style.left=Math.min(sx+12,card.width-tip.offsetWidth-8)+'px';tip.style.top=(sy-48)+'px'}
+  hit.addEventListener('mousemove',move);hit.addEventListener('mouseleave',()=>{tip.style.opacity=0;cross.setAttribute('opacity',0);dot.setAttribute('opacity',0)});
+  document.getElementById('ytTable').innerHTML='<tr><th>Month</th><th>Avg views</th></tr>'+labels.map((l,i)=>'<tr><td>'+l.replace(' ',' 20')+'</td><td>'+fmt(vals[i])+'</td></tr>').join('');
+  // Instagram: engagement rate by format
+  const ig=[['Photo carousels',10.1],['Single images',6.4],['Reels',4.9]],g=document.getElementById('igChart');g.innerHTML='';
+  const bx=118,bw=200,bh=30,gap=26;
+  ig.forEach(([n,v],i)=>{const by=14+i*(bh+gap);
+    const lb=el('text',{x:bx-12,y:by+bh/2+4,'text-anchor':'end','font-size':12},g);lb.textContent=n;
+    el('line',{x1:bx,x2:bx,y1:4,y2:200-8,stroke:GRID},g);
+    const w=bw*v/12,b=el('path',{d:`M${bx} ${by}h${w-4}a4 4 0 0 1 4 4v${bh-8}a4 4 0 0 1-4 4h${-(w-4)}z`,fill:ACC,opacity:i?0.55:1},g);
+    el('title',{},b).textContent=n+': '+v+'% engagement';
+    const vt=el('text',{x:bx+w+8,y:by+bh/2+4,'font-size':12,'font-weight':500},g);vt.textContent=v+'%'});
+  // X: monthly impressions
+  const xl=['Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26'];
+  const xv=[48970,49608,6701,9001,44766,21911,176985,46834,63869,28349,17914,138607];
+  const xs=document.getElementById('xChart'),xt=document.getElementById('xTip');xs.innerHTML='';
+  const XW=Math.max(300,Math.round(xs.getBoundingClientRect().width)||900),XH=XW<500?200:240,XL=40,XR=8,XT=22,XB=28,XM=200000;xs.setAttribute('viewBox','0 0 '+XW+' '+XH);
+  const xy=v=>XT+(XH-XT-XB)*(1-v/XM),slot=(XW-XL-XR)/xv.length,xbw=Math.min(44,slot*0.62);
+  [0,50000,100000,150000,200000].forEach(v=>{el('line',{x1:XL,x2:XW-XR,y1:xy(v),y2:xy(v),stroke:GRID},xs);const t=el('text',{x:XL-8,y:xy(v)+4,'text-anchor':'end','font-size':11},xs);t.textContent=v?v/1000+'K':'0'});
+  xv.forEach((v,i)=>{const cx=XL+slot*i+slot/2,top=xy(v),h=xy(0)-top,hi=(i===6||i===11);
+    const b=el('path',{d:`M${cx-xbw/2} ${xy(0)}V${top+3}a3 3 0 0 1 3-3h${xbw-6}a3 3 0 0 1 3 3V${xy(0)}z`,fill:ACC,opacity:hi?1:0.45},xs);
+    b.addEventListener('mousemove',e=>{xt.innerHTML='<strong>'+xl[i].replace(' ',' 20')+(i===11?' (through 23rd)':'')+'</strong><br>'+fmt(v)+' impressions';xt.style.opacity=1;
+      const card=xs.parentElement.getBoundingClientRect(),r=xs.getBoundingClientRect();xt.style.left=Math.min(r.left-card.left+cx*r.width/XW+12,card.width-xt.offsetWidth-8)+'px';xt.style.top=(r.top-card.top+top*r.height/XH-48)+'px'});
+    b.addEventListener('mouseleave',()=>{xt.style.opacity=0});
+    if(XW>=500||i%2===0){const t=el('text',{x:cx,y:XH-8,'text-anchor':'middle','font-size':11},xs);t.textContent=xl[i]}
+    if(hi){const t=el('text',{x:cx,y:top-7,'text-anchor':'middle','font-size':12,'font-weight':500},xs);t.textContent=Math.round(v/1000)+'K'}});
+  document.getElementById('xTable').innerHTML='<tr><th>Month</th><th>Impressions</th></tr>'+xl.map((l,i)=>'<tr><td>'+l.replace(' ',' 20')+(i===11?' (through 23rd)':'')+'</td><td>'+fmt(xv[i])+'</td></tr>').join('');
+});
+</script>
 </section>
-
 <div class="divider"></div>
 
 <!-- CONTACT -->
