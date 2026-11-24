@@ -473,6 +473,8 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify
 #results .kpi-grid{grid-template-columns:repeat(5,1fr);gap:1.25rem}
 #results .kpi-num{font-size:2.7rem}
 #results .x-card{margin-bottom:3rem}
+#results .post-link{display:inline-block;margin-top:.8rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+#results .post-link:hover{border-bottom-color:var(--accent)}
 @media(max-width:900px){#results .kpi-grid{grid-template-columns:repeat(2,1fr)}#results .kpi-grid .kpi:last-child:nth-child(odd){grid-column:span 2}}
 @media(max-width:600px){#results .kpi-grid{grid-template-columns:1fr}#results .kpi-grid .kpi:last-child:nth-child(odd){grid-column:auto}}
 </style>
@@ -514,30 +516,33 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify
 
   <div class="reveal"><p class="section-label" style="margin-bottom:1.2rem">Top Posts</p></div>
   <div class="post-grid reveal">
-    <div class="post-card" data-modal-img="assets/joey.jpg" data-modal-cat="Instagram · Interview Clip" data-modal-title="Joey McGuire: Red Raiders to Watch" data-modal-desc="Promo Reel from The Broadway Shuffle's sit-down interview with Head Coach Joey McGuire, cut to drive viewers to the full YouTube episode. The top post of the 2026 preseason. 12.3K views · 10.2K accounts reached. instagram.com/reel/DcdxPoQhzEz">
+    <div class="post-card" data-modal-img="assets/joey.jpg" data-modal-cat="Instagram · Interview Clip" data-modal-title="Joey McGuire: Red Raiders to Watch" data-modal-desc="Promo Reel from The Broadway Shuffle's sit-down interview with Head Coach Joey McGuire, cut to drive viewers to the full YouTube episode. The top post of the 2026 preseason. 12.3K views · 10.2K accounts reached.">
       <img class="post-shot" src="assets/joey.jpg" alt="Joey McGuire: Red Raiders to Watch" onerror="this.closest('.post-card').classList.add('no-img')">
       <div class="post-ph">Screenshot</div>
       <div class="post-info"><div class="p-cat" style="margin-bottom:.35rem">Instagram · Interview Clip</div><div class="v-title">Joey McGuire: Red Raiders to Watch</div>
-        <div class="post-stats"><span><b>12.3K</b> views</span><span><b>175</b> engagements</span></div></div>
-    </div>
-    <div class="post-card" data-modal-img="assets/zylertop10.jpg" data-modal-cat="Instagram · Commentary Reel" data-modal-title="Not a Top 10 Team… Yet" data-modal-desc="Quick-turn reaction reel after the Week 1 AP poll drop, timed to the news cycle. 10.9K views · 8.6K accounts reached. instagram.com/reel/DdC9TAZuDZe">
+        <div class="post-stats"><span><b>12.3k</b> views</span><span><b>175</b> engagements</span></div>
+        <a class="post-link" href="https://www.instagram.com/reel/DcdxPoQhzEz" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Instagram ↗</a>
+      </div>
+    <div class="post-card" data-modal-img="assets/zylertop10.jpg" data-modal-cat="Instagram · Commentary Reel" data-modal-title="Not a Top 10 Team… Yet" data-modal-desc="Quick-turn reaction reel after the Week 1 AP poll drop, timed to the news cycle. 10.9K views · 8.6K accounts reached.">
       <img class="post-shot" src="assets/zylertop10.jpg" alt="Not a Top 10 Team… Yet" onerror="this.closest('.post-card').classList.add('no-img')">
       <div class="post-ph">Screenshot</div>
       <div class="post-info"><div class="p-cat" style="margin-bottom:.35rem">Instagram · Commentary Reel</div><div class="v-title">Not a Top 10 Team… Yet</div>
-        <div class="post-stats"><span><b>10.9K</b> views</span><span><b>416</b> engagements</span></div></div>
-    </div>
-    <div class="post-card" data-modal-img="assets/grant.jpg" data-modal-cat="Instagram · Interview Clip" data-modal-title="Why Grant McCasland Loves Texas Tech" data-modal-desc="Promo Reel from The Broadway Shuffle's sit-down interview with Head Coach Grant McCasland, cut to drive viewers to the full YouTube episode. 18K views · 10K accounts reached. https://www.instagram.com/p/DfPd17qvS7z/">
+         <div class="post-stats"><span><b>10.9k</b> views</span><span><b>416</b> engagements</span></div>
+        <a class="post-link" href="https://www.instagram.com/reel/DdC9TAZuDZe" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Instagram ↗</a>
+      </div>
+    <div class="post-card" data-modal-img="assets/grant.jpg" data-modal-cat="Instagram · Interview Clip" data-modal-title="Why Grant McCasland Loves Texas Tech" data-modal-desc="Promo Reel from The Broadway Shuffle's sit-down interview with Head Coach Grant McCasland, cut to drive viewers to the full YouTube episode. 18K views · 10K accounts reached.">
       <img class="post-shot" src="assets/grant.jpg" alt="Why Grant McCasland Loves Texas Tech" onerror="this.closest('.post-card').classList.add('no-img')">
       <div class="post-ph">Screenshot</div>
       <div class="post-info"><div class="p-cat" style="margin-bottom:.35rem">Instagram · Interview Clip</div><div class="v-title">Why Grant McCasland Loves Texas Tech</div>
-        <div class="post-stats"><span><b>18K</b> views</span><span><b>956</b> engagements</span></div></div>
-    </div>
+      <div class="post-stats"><span><b>18k</b> views</span><span><b>956</b> engagements</span></div>
+        <a class="post-link" href="https://www.instagram.com/p/DfPd17qvS7z/" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Instagram ↗</a>
+      </div>
     <div class="post-card" data-modal-img="assets/joeycollage.jpg" data-modal-cat="Instagram · Photo Carousel" data-modal-title="Behind the Scenes at Galaxy Stadium" data-modal-desc="Behind-the-scenes photo carousel from the Joey McGuire interview shoot, posted to build anticipation for the episode. Photography by me. 6.5K views · 2.4K accounts reached.">
       <img class="post-shot" src="assets/joeycollage.jpg" alt="Behind the Scenes at Galaxy Stadium" onerror="this.closest('.post-card').classList.add('no-img')">
       <div class="post-ph">Screenshot</div>
       <div class="post-info"><div class="p-cat" style="margin-bottom:.35rem">Instagram · Photo Carousel</div><div class="v-title">Behind the Scenes at Galaxy Stadium</div>
-        <div class="post-stats"><span><b>6.5K</b> views</span><span><b>232</b> engagements</span></div></div>
-      <a class="post-link" href="https://www.instagram.com/p/DcSMEhSFgbG" target="_blank" rel="noopener" onclick="event.stopPropagation()">View On Instagram ↗</a>
+                <div class="post-stats"><span><b>6.5K</b> views</span><span><b>232</b> engagements</span></div>
+        <a class="post-link" href="https://www.instagram.com/p/DcSMEhSFgbG/" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Instagram ↗</a></div>
     </div>
   </div>
   <p class="results-foot reveal">Source: YouTube Studio export, November 22, 2026; X account analytics, November 23, 2026; Instagram figures from Meta Business Suite, October 9, 2026. Views are lifetime totals, so recent episodes are still climbing.</p>
